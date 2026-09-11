@@ -1,0 +1,917 @@
+---
+const researchAreas = [
+  {
+    number: "01",
+    title: "Magnetic Microrobotics and Systems",
+    description:
+      "Development of next-generation magnetic microrobot systems for biomedical and intelligent actuation applications.",
+  },
+  {
+    number: "02",
+    title: "Battery Management Systems",
+    description:
+      "Development of high-efficiency active cell-balancing technologies for next-generation battery systems.",
+  },
+  {
+    number: "03",
+    title: "Biomedical Applications",
+    description:
+      "Development of highly reliable nanopore sensing technologies for biomedical applications.",
+  },
+];
+
+const publications = [
+  {
+    year: "2026",
+    title:
+      "Hybrid Permanent Magnet Helmholtz Coil System for 3D Microrobot Actuation",
+    journal: "IEEE / Robotics Research",
+  },
+  {
+    year: "2026",
+    title:
+      "Maximum Force-per-Ampere Control for Magnetic Microrobot Systems",
+    journal: "International Conference",
+  },
+  {
+    year: "2025",
+    title:
+      "Intelligent Semiconductor and Robotic System Integration",
+    journal: "Advanced Systems Journal",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Electromagnetic Systems Laboratory (EMS), Hanyang University ERICA."
+    />
+
+    <title>HY-EMS LAB | Hanyang University ERICA</title>
+
+    <style>
+      :root {
+        --hyu: #0054a6;
+        --hyu-deep: #003b73;
+        --hyu-mid: #1578c6;
+        --hyu-sky: #67bff2;
+        --hyu-pale: #eaf5ff;
+
+        --bg: #f7fbff;
+        --surface: rgba(255, 255, 255, 0.78);
+        --surface-strong: rgba(255, 255, 255, 0.95);
+
+        --text: #15324c;
+        --muted: #6d8296;
+        --line: rgba(0, 84, 166, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          Inter,
+          "Pretendard",
+          Arial,
+          Helvetica,
+          sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 10% 10%, rgba(103, 191, 242, 0.18), transparent 28%),
+          radial-gradient(circle at 88% 18%, rgba(0, 84, 166, 0.13), transparent 26%),
+          linear-gradient(180deg, #ffffff 0%, #f4faff 48%, #ffffff 100%);
+        overflow-x: hidden;
+      }
+
+      /* subtle Hanyang-blue grid */
+      .background-grid {
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(0, 84, 166, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 84, 166, 0.04) 1px, transparent 1px);
+        background-size: 64px 64px;
+        mask-image: linear-gradient(to bottom, black, transparent 88%);
+        pointer-events: none;
+        z-index: -5;
+      }
+
+      /* animated particles */
+      #particles {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -4;
+      }
+
+      /* light follows mouse */
+      .cursor-glow {
+        position: fixed;
+        width: 460px;
+        height: 460px;
+        border-radius: 50%;
+        background:
+          radial-gradient(
+            circle,
+            rgba(64, 165, 235, 0.16),
+            rgba(0, 84, 166, 0.07) 42%,
+            transparent 72%
+          );
+        transform: translate(-50%, -50%);
+        filter: blur(12px);
+        pointer-events: none;
+        z-index: -3;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 42px));
+        margin: 0 auto;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 78px;
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(0, 84, 166, 0.08);
+        z-index: 1000;
+      }
+
+      .nav-inner {
+        width: min(1180px, calc(100% - 42px));
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--hyu);
+        font-weight: 850;
+        letter-spacing: 0.12em;
+        font-size: 17px;
+      }
+
+      .logo-mark {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: white;
+        font-size: 11px;
+        letter-spacing: 0.03em;
+        background: linear-gradient(135deg, var(--hyu), var(--hyu-mid));
+        box-shadow: 0 8px 24px rgba(0, 84, 166, 0.22);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 28px;
+      }
+
+      .nav-links a {
+        color: #58728b;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        transition: 0.25s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--hyu);
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 80px;
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 720px;
+        height: 720px;
+        top: 2%;
+        right: -260px;
+        border-radius: 50%;
+        background:
+          radial-gradient(
+            circle,
+            rgba(76, 170, 235, 0.20),
+            rgba(0, 84, 166, 0.08) 40%,
+            transparent 70%
+          );
+        animation: floatingOrb 7s ease-in-out infinite alternate;
+      }
+
+      @keyframes floatingOrb {
+        from {
+          transform: translateY(-25px) scale(0.95);
+        }
+        to {
+          transform: translateY(35px) scale(1.08);
+        }
+      }
+
+      .hero-content {
+        max-width: 930px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        border: 1px solid rgba(0, 84, 166, 0.14);
+        border-radius: 999px;
+        padding: 9px 16px;
+        color: var(--hyu);
+        font-size: 12px;
+        font-weight: 750;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.66);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 12px 35px rgba(0, 84, 166, 0.05);
+      }
+
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--hyu);
+        box-shadow: 0 0 14px rgba(0, 84, 166, 0.7);
+      }
+
+      h1 {
+        margin-top: 30px;
+        font-size: clamp(58px, 8.7vw, 120px);
+        line-height: 0.9;
+        letter-spacing: -0.058em;
+        max-width: 1050px;
+        color: #153a59;
+      }
+
+      .gradient-text {
+        display: inline-block;
+        background:
+          linear-gradient(
+            90deg,
+            var(--hyu-deep),
+            var(--hyu),
+            #2591d2,
+            var(--hyu-sky),
+            var(--hyu-deep)
+          );
+        -webkit-background-clip: text;
+        color: transparent;
+        background-size: 220% auto;
+        animation: gradientMove 7s linear infinite;
+      }
+
+      @keyframes gradientMove {
+        to {
+          background-position: 220% center;
+        }
+      }
+
+      .hero-description {
+        margin-top: 34px;
+        max-width: 700px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.85;
+      }
+
+      .hero-actions {
+        margin-top: 38px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        padding: 0 24px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        transition: 0.3s ease;
+      }
+
+      .btn-primary {
+        color: white;
+        background: linear-gradient(135deg, var(--hyu), var(--hyu-mid));
+        box-shadow: 0 12px 35px rgba(0, 84, 166, 0.22);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 45px rgba(0, 84, 166, 0.30);
+      }
+
+      .btn-secondary {
+        color: var(--hyu);
+        border: 1px solid rgba(0, 84, 166, 0.18);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .btn-secondary:hover {
+        background: var(--hyu-pale);
+        transform: translateY(-3px);
+      }
+
+      .scroll-text {
+        position: absolute;
+        bottom: 34px;
+        right: 0;
+        color: #7f95aa;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        writing-mode: vertical-rl;
+      }
+
+      section {
+        padding: 140px 0;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 30px;
+        margin-bottom: 60px;
+      }
+
+      .section-kicker {
+        color: var(--hyu);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 12px;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+
+      h2 {
+        font-size: clamp(38px, 5vw, 66px);
+        letter-spacing: -0.045em;
+        line-height: 1;
+        color: #153a59;
+      }
+
+      .section-desc {
+        max-width: 470px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      /* scroll reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(42px);
+        transition:
+          opacity 0.85s ease,
+          transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .research-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .research-card {
+        min-height: 310px;
+        padding: 32px;
+        border: 1px solid rgba(0, 84, 166, 0.10);
+        border-radius: 26px;
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(15px);
+        box-shadow: 0 16px 50px rgba(28, 94, 146, 0.07);
+        position: relative;
+        overflow: hidden;
+        transition: 0.4s ease;
+      }
+
+      .research-card::after {
+        content: "";
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        right: -145px;
+        bottom: -150px;
+        border-radius: 50%;
+        background:
+          radial-gradient(
+            circle,
+            rgba(68, 176, 240, 0.25),
+            rgba(0, 84, 166, 0.08) 45%,
+            transparent 70%
+          );
+        transition: 0.45s ease;
+      }
+
+      .research-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(0, 84, 166, 0.24);
+        box-shadow: 0 26px 65px rgba(0, 84, 166, 0.14);
+      }
+
+      .research-card:hover::after {
+        transform: scale(1.55);
+      }
+
+      .card-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--hyu-pale);
+        color: var(--hyu);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+      }
+
+      .research-card h3 {
+        margin-top: 72px;
+        font-size: 26px;
+        color: #153a59;
+        position: relative;
+        z-index: 1;
+      }
+
+      .research-card p {
+        margin-top: 14px;
+        color: var(--muted);
+        line-height: 1.72;
+        max-width: 500px;
+        position: relative;
+        z-index: 1;
+      }
+
+      #publications {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(234, 245, 255, 0.72),
+            rgba(255, 255, 255, 0.45)
+          );
+      }
+
+      .publications {
+        border-top: 1px solid var(--line);
+      }
+
+      .pub-row {
+        display: grid;
+        grid-template-columns: 90px 1fr 240px;
+        gap: 25px;
+        padding: 28px 8px;
+        border-bottom: 1px solid var(--line);
+        transition: 0.3s ease;
+      }
+
+      .pub-row:hover {
+        padding-left: 18px;
+        background: rgba(0, 84, 166, 0.035);
+      }
+
+      .pub-year {
+        color: var(--hyu);
+        font-size: 14px;
+        font-weight: 850;
+      }
+
+      .pub-title {
+        font-size: 19px;
+        line-height: 1.5;
+        color: #214765;
+      }
+
+      .pub-journal {
+        color: var(--muted);
+        text-align: right;
+        line-height: 1.5;
+      }
+
+      /* People area kept ready for future member cards */
+      #people .people-placeholder {
+        min-height: 220px;
+        border: 1px dashed rgba(0, 84, 166, 0.20);
+        border-radius: 26px;
+        background: rgba(255, 255, 255, 0.60);
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 30px;
+        color: #7890a7;
+      }
+
+      .join {
+        padding-bottom: 180px;
+      }
+
+      .join-box {
+        min-height: 430px;
+        padding: 56px;
+        border-radius: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background:
+          linear-gradient(135deg, #00498e 0%, #006cc4 52%, #39a9e6 100%);
+        color: white;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 30px 80px rgba(0, 84, 166, 0.23);
+      }
+
+      .join-box::before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        right: -150px;
+        top: -210px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.11);
+      }
+
+      .join-box::after {
+        content: "";
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        right: 170px;
+        top: 70px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.20);
+      }
+
+      .join-box .section-kicker,
+      .join-box h2,
+      .join-box p,
+      .join-box .hero-actions {
+        position: relative;
+        z-index: 2;
+      }
+
+      .join-box .section-kicker {
+        color: rgba(255, 255, 255, 0.88);
+      }
+
+      .join-box h2 {
+        max-width: 800px;
+        color: white;
+      }
+
+      .join-box p {
+        margin-top: 22px;
+        color: rgba(255, 255, 255, 0.80);
+        font-size: 18px;
+      }
+
+      .join-box .btn-primary {
+        color: var(--hyu);
+        background: white;
+        box-shadow: none;
+      }
+
+      footer {
+        padding: 40px 0;
+        border-top: 1px solid var(--line);
+        background: white;
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 980px) {
+        .research-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 800px) {
+        .nav-links {
+          display: none;
+        }
+
+        .pub-row {
+          grid-template-columns: 1fr;
+        }
+
+        .pub-journal {
+          text-align: left;
+        }
+
+        .section-head {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .join-box {
+          padding: 35px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas id="particles"></canvas>
+    <div class="background-grid"></div>
+    <div class="cursor-glow"></div>
+
+    <nav>
+      <div class="nav-inner">
+        <div class="logo">
+          <div class="logo-mark">EMS</div>
+          HY-EMS LAB
+        </div>
+
+        <div class="nav-links">
+          <a href="#research">RESEARCH</a>
+          <a href="#publications">PUBLICATIONS</a>
+          <a href="#people">PEOPLE</a>
+          <a href="#contact">CONTACT</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <div class="eyebrow">
+              <span class="dot"></span>
+              Hanyang University ERICA · Electromagnetic Systems Laboratory (EMS)
+            </div>
+
+            <h1>
+              Engineering
+              <span class="gradient-text">Beyond Limits.</span>
+            </h1>
+
+            <p class="hero-description">
+              We explore advanced electromagnetic systems spanning power converters,
+              magnetic microrobotics, battery management systems, and biomedical
+              applications to build technologies for the next generation.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#research">
+                Explore Research →
+              </a>
+
+              <a class="btn btn-secondary" href="#contact">
+                Join Our Lab
+              </a>
+            </div>
+          </div>
+
+          <div class="scroll-text">Scroll to explore</div>
+        </div>
+      </section>
+
+      <section id="research" class="reveal">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Research</div>
+              <h2>What we explore.</h2>
+            </div>
+
+            <p class="section-desc">
+              Our research expands from power converters to microrobotics,
+              magnetic actuation systems, battery management systems,
+              and biomedical applications.
+            </p>
+          </div>
+
+          <div class="research-grid">
+            {
+              researchAreas.map((area) => (
+                <article class="research-card">
+                  <div class="card-number">{area.number}</div>
+                  <h3>{area.title}</h3>
+                  <p>{area.description}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section id="publications" class="reveal">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Publications</div>
+              <h2>Selected works.</h2>
+            </div>
+
+            <p class="section-desc">
+              Recent publications and research outcomes from our laboratory.
+            </p>
+          </div>
+
+          <div class="publications">
+            {
+              publications.map((pub) => (
+                <div class="pub-row">
+                  <div class="pub-year">{pub.year}</div>
+                  <div class="pub-title">{pub.title}</div>
+                  <div class="pub-journal">{pub.journal}</div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section id="people" class="reveal">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">People</div>
+              <h2>Meet the team.</h2>
+            </div>
+
+            <p class="section-desc">
+              Faculty, graduate students, researchers, and collaborators
+              working together across disciplines.
+            </p>
+          </div>
+
+          <div class="people-placeholder">
+            <div>
+              <strong style="color:#0054a6;">Team profiles coming next</strong><br />
+              Professor / Ph.D. / M.S. member cards can be added here.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="join reveal" id="contact">
+        <div class="container">
+          <div class="join-box">
+            <div class="section-kicker">Join Us</div>
+
+            <h2>
+              Build the next generation of electromagnetic systems with us.
+            </h2>
+
+            <p>
+              We are always looking for motivated students and researchers.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="mailto:swlee0123@hanyang.ac.kr">
+                Contact Us →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>ⓒ 2026 HY-EMS LAB</span>
+        <span>Hanyang University ERICA · Microrobotics · Power Converter</span>
+      </div>
+    </footer>
+
+    <script>
+      const glow = document.querySelector(".cursor-glow");
+
+      document.addEventListener("mousemove", (event) => {
+        glow.style.left = event.clientX + "px";
+        glow.style.top = event.clientY + "px";
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((element) => {
+        observer.observe(element);
+      });
+
+      const canvas = document.getElementById("particles");
+      const ctx = canvas.getContext("2d");
+
+      let width;
+      let height;
+
+      function resizeCanvas() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      const particles = [];
+      const particleCount = Math.min(75, Math.floor(window.innerWidth / 15));
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          radius: Math.random() * 1.7 + 0.4,
+          vx: Math.random() * 0.18 - 0.09,
+          vy: Math.random() * 0.28 - 0.14,
+        });
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, width, height);
+
+        particles.forEach((particle) => {
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+
+          if (particle.x < 0 || particle.x > width) {
+            particle.vx *= -1;
+          }
+
+          if (particle.y < 0 || particle.y > height) {
+            particle.vy *= -1;
+          }
+
+          ctx.beginPath();
+          ctx.arc(
+            particle.x,
+            particle.y,
+            particle.radius,
+            0,
+            Math.PI * 2
+          );
+
+          ctx.fillStyle = "rgba(0,84,166,0.22)";
+          ctx.fill();
+        });
+
+        requestAnimationFrame(animateParticles);
+      }
+
+      animateParticles();
+    </script>
+  </body>
+</html>
