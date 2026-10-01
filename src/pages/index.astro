@@ -2,9 +2,9 @@
 const researchAreas = [
   {
     number: "01",
-    title: "Magnetic Microrobotics and Systems",
+    title: "Electromagnetic Systems",
     description:
-      "Development of next-generation magnetic microrobot systems for biomedical and intelligent actuation applications.",
+      "Development of next-generation electromagnetic systems for biomedical microrrobots and intelligent actuation applications.",
   },
   {
     number: "02",
@@ -24,20 +24,32 @@ const publications = [
   {
     year: "2026",
     title:
-      "Hybrid Permanent Magnet Helmholtz Coil System for 3D Microrobot Actuation",
-    journal: "IEEE / Robotics Research",
+      "Hybrid Permanent Magnet–Helmholtz Coil System with Maximum Force-per-Ampere Actuation for Soft Magnetic Microrobots",
+    journal: "IEEE Transactions on Industrial Electronics · Under review",
   },
   {
     year: "2026",
     title:
-      "Maximum Force-per-Ampere Control for Magnetic Microrobot Systems",
-    journal: "International Conference",
+      "3D Closed-Loop Navigation of Magnetic Microswimmers Using Vision-Derived Depth Feedback",
+    journal: "Advanced Intelligent Systems · Under review",
   },
   {
-    year: "2025",
+    year: "2026",
     title:
-      "Intelligent Semiconductor and Robotic System Integration",
-    journal: "Advanced Systems Journal",
+      "P.O.R.E.: A Programmable Ohmic Research Engine for Low-Cost Solid-State Nanopore Fabrication",
+    journal: "IEEE Access",
+  },
+  {
+    year: "2026",
+    title:
+      "A Modular Hydrogel Robot Integrating Magnetic Navigation, Drug Delivery, and SERS-Based Biosensing",
+    journal: "Chemical Engineering Journal",
+  },
+  {
+    year: "2026",
+    title:
+      "Thermoresponsive Alginate/PNIPAM/Fe₃O₄ Microbots under Magnetic Surface Locomotion for Ocular Therapies",
+    journal: "Sensors and Actuators A: Physical",
   },
 ];
 ---
@@ -537,19 +549,6 @@ const publications = [
         line-height: 1.5;
       }
 
-      /* People area kept ready for future member cards */
-      #people .people-placeholder {
-        min-height: 220px;
-        border: 1px dashed rgba(0, 84, 166, 0.20);
-        border-radius: 26px;
-        background: rgba(255, 255, 255, 0.60);
-        display: grid;
-        place-items: center;
-        text-align: center;
-        padding: 30px;
-        color: #7890a7;
-      }
-
       .join {
         padding-bottom: 180px;
       }
@@ -614,6 +613,21 @@ const publications = [
         font-size: 18px;
       }
 
+      .contact-details {
+        margin-top: 28px;
+        display: grid;
+        gap: 10px;
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 16px;
+        line-height: 1.7;
+        position: relative;
+        z-index: 2;
+      }
+
+      .contact-details strong {
+        color: #ffffff;
+      }
+
       .join-box .btn-primary {
         color: var(--hyu);
         background: white;
@@ -661,6 +675,7 @@ const publications = [
         .join-box {
           padding: 35px;
         }
+
       }
     </style>
   </head>
@@ -679,8 +694,9 @@ const publications = [
 
         <div class="nav-links">
           <a href="#research">RESEARCH</a>
-          <a href="#publications">PUBLICATIONS</a>
-          <a href="#people">PEOPLE</a>
+          <a href="/publications">PUBLICATIONS</a>
+
+          <a href="/people">PEOPLE</a>
           <a href="#contact">CONTACT</a>
         </div>
       </div>
@@ -730,9 +746,7 @@ const publications = [
             </div>
 
             <p class="section-desc">
-              Our research expands from power converters to microrobotics,
-              magnetic actuation systems, battery management systems,
-              and biomedical applications.
+
             </p>
           </div>
 
@@ -759,7 +773,7 @@ const publications = [
             </div>
 
             <p class="section-desc">
-              Recent publications and research outcomes from our laboratory.
+              Five most recent international journal publications from our laboratory.
             </p>
           </div>
 
@@ -774,28 +788,11 @@ const publications = [
               ))
             }
           </div>
-        </div>
-      </section>
 
-      <section id="people" class="reveal">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <div class="section-kicker">People</div>
-              <h2>Meet the team.</h2>
-            </div>
-
-            <p class="section-desc">
-              Faculty, graduate students, researchers, and collaborators
-              working together across disciplines.
-            </p>
-          </div>
-
-          <div class="people-placeholder">
-            <div>
-              <strong style="color:#0054a6;">Team profiles coming next</strong><br />
-              Professor / Ph.D. / M.S. member cards can be added here.
-            </div>
+          <div class="hero-actions" style="margin-top:32px;">
+            <a class="btn btn-secondary" href="/publications">
+              View All Publications →
+            </a>
           </div>
         </div>
       </section>
@@ -806,17 +803,17 @@ const publications = [
             <div class="section-kicker">Join Us</div>
 
             <h2>
-              Build the next generation of electromagnetic systems with us.
+              Lead the future of technology with us.
             </h2>
 
             <p>
               We are always looking for motivated students and researchers.
             </p>
 
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="mailto:swlee0123@hanyang.ac.kr">
-                Contact Us →
-              </a>
+            <div class="contact-details">
+              <div><strong>Address:</strong> Gyeonggi-do Sangnok-gu 55 Hanyangdaehak-ro, Bldg. 303, Rm. 503</div>
+              <div><strong>Email:</strong> swlee0123@hanyang.ac.kr</div>
+              <div><strong>Phone:</strong> 031-4000-5218</div>
             </div>
           </div>
         </div>

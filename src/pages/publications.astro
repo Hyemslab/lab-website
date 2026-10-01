@@ -1,0 +1,621 @@
+---
+const publicationGroups = [
+  {
+    year: "2026",
+    items: [
+      {
+        citation:
+          'S. Lee, A. Khedewy, L. Gurusinghe, M. I. Azeez, L. Rogowski, and M. J. Kim, “Hybrid Permanent Magnet–Helmholtz Coil System with Maximum Force-per-Ampere Actuation for Soft Magnetic Microrobots,” IEEE Transactions on Industrial Electronics.',
+        status: "Under review",
+      },
+      {
+        citation:
+          'Y. C. Duygu, S. Lee, and M. J. Kim, “3D Closed-Loop Navigation of Magnetic Microswimmers Using Vision-Derived Depth Feedback,” Advanced Intelligent Systems.',
+        status: "Under review",
+      },
+      {
+        citation:
+          'C. Gu, S. Lee (co-first author), K. Joty, N. Thyashan and M. J. Kim, "P.O.R.E.: A Programmable Ohmic Research Engine for Low-Cost Solid-State Nanopore Fabrication," in IEEE Access.',
+        doi: "10.1109/ACCESS.2026.3727354",
+      },
+      {
+        citation:
+          'D. Kim, S. Lee (co-first author), Y. Eom, et al., “A modular hydrogel robot integrating magnetic navigation, drug delivery, and SERS-based biosensing,” 2026.',
+        doi: "10.1016/j.cej.2026.181220",
+      },
+      {
+        citation:
+          'A. Khedewy, L. Gurusinghe, E. Fox, S. Lee, J. Clements, Y. C. Duygu, M. J. Kim, and L. W. Rogowski, “Thermoresponsive alginate/PNIPAM/Fe₃O₄ microbots under magnetic surface locomotion for ocular therapies,” Sensors and Actuators A: Physical, p. 117783, 2026.',
+        doi: "10.1016/j.sna.2026.117783",
+      },
+      {
+        citation:
+          'M. I. Azeez, S. Lee, L. Gurusinghe, Z. Wang, A. T. Becker and M. J. Kim, "Magnetically Actuated Milli-Scale Voxel Robot for Navigation in Tubular and Anatomical Environments," in IEEE Robotics and Automation Letters, vol. 11, no. 5, pp. 5662-5669, May 2026.',
+        doi: "10.1109/LRA.2026.3674668",
+      },
+      {
+        citation:
+          'S. Lee, Y. C. Duygu, L. W. Rogowski, and M. J. Kim, “Non-vision-based localization and feedback control of untethered magnetic microrobots with hall-effect magnetic sensors under actuation field interference,” Sensors and Actuators A: Physical, vol. 403, p. 117688, 2026.',
+        doi: "10.1016/j.sna.2026.117688",
+      },
+    ],
+  },
+  {
+    year: "2025",
+    items: [
+      {
+        citation:
+          'S. Lee, M. I. Azeez, Y. C. Duygu and M. J. Kim, "Instrumenting a Triaxial Helmholtz System for Position-Independent Magnetic Force Control: Modeling, Calibration, and Validation," in IEEE Access, vol. 13, pp. 208948-208961, 2025.',
+        doi: "10.1109/ACCESS.2025.3641895",
+      },
+      {
+        citation:
+          'Z. Wang, A. Bhattacharjee, Y. C. Duygu, S. Lee, M. Jabbarzadeh, H. C. Fu, and M. J. Kim, “Design, modeling, and control of magnetically actuated rod-like soft robots: Propulsion in free space with viscous fluids and navigation in confined geometries,” Sensors and Actuators A: Physical, vol. 387, p. 116305, 2025.',
+        doi: "10.1016/j.sna.2025.116305",
+      },
+      {
+        citation:
+          'Y. C. Duygu, S. Lee, A. Liu, U. K. Cheang, and M. J. Kim, “Surface motion dynamics and swimming control of planar magnetic microswimmers,” Scientific Reports, vol. 15, no. 9645, 2025.',
+        doi: "10.1038/s41598-025-94078-y",
+      },
+    ],
+  },
+  {
+    year: "2024",
+    items: [
+      {
+        citation:
+          'J. Shim, J. Seo, S. Lee, T. Joung, H. Kwak and J. -I. Ha, "Ensemble-Based Anomaly Detection with Comprehensive Feature Distances for Induction Motors," in IEEE Transactions on Industry Applications, vol. 60, no. 4, pp. 6033-6044, July-Aug. 2024.',
+        doi: "10.1109/TIA.2024.3384356",
+      },
+      {
+        citation:
+          'J. Shim, S. Lee, D. Jeon and J. -I. Ha, "Contact Force Estimation Using Uncertain Torque Model and Friction Models for Robot Manipulator," in IEEE Transactions on Industrial Electronics, vol. 71, no. 10, pp. 12634-12644, Oct. 2024.',
+        doi: "10.1109/TIE.2024.3352145",
+      },
+      {
+        citation:
+          'S. Lee, J. -S. Hong, J. Shim, M. Kim and J. -I. Ha, "Magnetic Field Synthesis of Electromagnetic Navigation Systems in Current Limits," in IEEE Transactions on Industrial Electronics, vol. 71, no. 7, pp. 7477-7487, July 2024.',
+        doi: "10.1109/TIE.2023.3306399",
+      },
+    ],
+  },
+  {
+    year: "2023",
+    items: [
+      {
+        citation:
+          'S. Lee, G. Noh and J. -I. Ha, "Reconfigurable Power Circuits to Series or Parallel for Energy-Balanced Multicell Battery Pack," in IEEE Transactions on Industrial Electronics, vol. 70, no. 4, pp. 3641-3651, April 2023.',
+        doi: "10.1109/TIE.2022.3181412",
+      },
+    ],
+  },
+  {
+    year: "2022",
+    items: [
+      {
+        citation:
+          'J. -S. Hong, S. Lee and J. -I. Ha, "Control Method in Minimum Infinity-Norm Approach for Multicoil Magnetic Manipulation System," in IEEE Transactions on Magnetics, vol. 58, no. 1, pp. 1-9, Jan. 2022, Art no. 5600209.',
+        doi: "10.1109/TMAG.2021.3123093",
+      },
+      {
+        citation:
+          'H. Chen, K. Sun, H. Shi, J. -I. Ha and S. Lee, "A Battery Charging Method With Natural Synchronous Rectification Features for Full-Bridge CLLC Converters," in IEEE Transactions on Power Electronics, vol. 37, no. 2, pp. 2139-2151, Feb. 2022.',
+        doi: "10.1109/TPEL.2021.3108622",
+      },
+    ],
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="International journal publications of the Electromagnetic Systems Laboratory (EMS), Hanyang University ERICA."
+    />
+    <title>Publications | HY-EMS LAB</title>
+
+    <style>
+      :root {
+        --hyu: #0054a6;
+        --hyu-deep: #003b73;
+        --hyu-mid: #1578c6;
+        --hyu-sky: #67bff2;
+        --hyu-pale: #eaf5ff;
+        --text: #15324c;
+        --muted: #6d8296;
+        --line: rgba(0, 84, 166, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: Inter, "Pretendard", Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 10% 10%, rgba(103, 191, 242, 0.18), transparent 28%),
+          radial-gradient(circle at 88% 18%, rgba(0, 84, 166, 0.13), transparent 26%),
+          linear-gradient(180deg, #ffffff 0%, #f4faff 48%, #ffffff 100%);
+        overflow-x: hidden;
+      }
+
+      .background-grid {
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(0, 84, 166, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 84, 166, 0.04) 1px, transparent 1px);
+        background-size: 64px 64px;
+        mask-image: linear-gradient(to bottom, black, transparent 88%);
+        pointer-events: none;
+        z-index: -5;
+      }
+
+      #particles {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -4;
+      }
+
+      .cursor-glow {
+        position: fixed;
+        width: 460px;
+        height: 460px;
+        border-radius: 50%;
+        background:
+          radial-gradient(
+            circle,
+            rgba(64, 165, 235, 0.16),
+            rgba(0, 84, 166, 0.07) 42%,
+            transparent 72%
+          );
+        transform: translate(-50%, -50%);
+        filter: blur(12px);
+        pointer-events: none;
+        z-index: -3;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 42px));
+        margin: 0 auto;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 78px;
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(0, 84, 166, 0.08);
+        z-index: 1000;
+      }
+
+      .nav-inner {
+        width: min(1180px, calc(100% - 42px));
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--hyu);
+        font-weight: 850;
+        letter-spacing: 0.12em;
+        font-size: 17px;
+        text-decoration: none;
+      }
+
+      .logo-mark {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: white;
+        font-size: 11px;
+        background: linear-gradient(135deg, var(--hyu), var(--hyu-mid));
+        box-shadow: 0 8px 24px rgba(0, 84, 166, 0.22);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 28px;
+      }
+
+      .nav-links a {
+        color: #58728b;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        transition: 0.25s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--hyu);
+      }
+
+      main {
+        padding-top: 78px;
+      }
+
+      .page-hero {
+        padding: 110px 0 72px;
+      }
+
+      .section-kicker {
+        color: var(--hyu);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 12px;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        font-size: clamp(50px, 7vw, 92px);
+        line-height: 0.95;
+        letter-spacing: -0.055em;
+        color: #153a59;
+      }
+
+      .hero-desc {
+        margin-top: 24px;
+        max-width: 760px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .year-nav {
+        position: sticky;
+        top: 78px;
+        z-index: 900;
+        background: rgba(247, 251, 255, 0.88);
+        backdrop-filter: blur(14px);
+        border-top: 1px solid rgba(0, 84, 166, 0.07);
+        border-bottom: 1px solid rgba(0, 84, 166, 0.10);
+      }
+
+      .year-nav-inner {
+        min-height: 62px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .year-nav a {
+        color: #5c748b;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 750;
+        padding: 9px 15px;
+        border-radius: 999px;
+        transition: 0.25s ease;
+      }
+
+      .year-nav a:hover {
+        color: var(--hyu);
+        background: var(--hyu-pale);
+      }
+
+      .publication-year {
+        scroll-margin-top: 165px;
+        padding: 82px 0 0;
+      }
+
+      .publication-year:last-of-type {
+        padding-bottom: 120px;
+      }
+
+      .year-heading {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 26px;
+      }
+
+      .year-heading h2 {
+        font-size: 42px;
+        letter-spacing: -0.04em;
+        color: #153a59;
+      }
+
+      .year-line {
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(90deg, rgba(0,84,166,0.20), transparent);
+      }
+
+      .publication-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .publication-item {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 18px;
+        padding: 25px 26px;
+        border: 1px solid rgba(0, 84, 166, 0.10);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 12px 38px rgba(28, 94, 146, 0.05);
+        transition: 0.3s ease;
+      }
+
+      .publication-item:hover {
+        transform: translateY(-3px);
+        border-color: rgba(0, 84, 166, 0.22);
+        box-shadow: 0 18px 46px rgba(0, 84, 166, 0.10);
+      }
+
+      .pub-number {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--hyu);
+        background: var(--hyu-pale);
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .pub-citation {
+        color: #405d76;
+        line-height: 1.78;
+        font-size: 15px;
+      }
+
+      .pub-meta {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .doi-link,
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 11px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 750;
+      }
+
+      .doi-link {
+        color: var(--hyu);
+        background: var(--hyu-pale);
+        text-decoration: none;
+      }
+
+      .doi-link:hover {
+        background: #dceeff;
+      }
+
+      .status-pill {
+        color: #6b5b16;
+        background: #fff8d8;
+      }
+
+      footer {
+        margin-top: 80px;
+        padding: 40px 0;
+        border-top: 1px solid var(--line);
+        background: white;
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 800px) {
+        .nav-links {
+          display: none;
+        }
+
+        .publication-item {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas id="particles"></canvas>
+    <div class="background-grid"></div>
+    <div class="cursor-glow"></div>
+
+    <nav>
+      <div class="nav-inner">
+        <a class="logo" href="/">
+          <div class="logo-mark">EMS</div>
+          HY-EMS LAB
+        </a>
+
+        <div class="nav-links">
+          <a href="/#research">RESEARCH</a>
+          <a class="active" href="/publications">PUBLICATIONS</a>
+          <a href="/people">PEOPLE</a>
+          <a href="/#contact">CONTACT</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <div class="section-kicker">Publications</div>
+          <h1>International Journals.</h1>
+          <p class="hero-desc">
+            International journal publications from HY-EMS LAB, arranged by year
+            with the most recent work shown first.
+          </p>
+        </div>
+      </section>
+
+      <div class="year-nav">
+        <div class="container year-nav-inner">
+          {publicationGroups.map((group) => (
+            <a href={`#year-${group.year}`}>{group.year}</a>
+          ))}
+        </div>
+      </div>
+
+      {
+        publicationGroups.map((group) => (
+          <section id={`year-${group.year}`} class="publication-year">
+            <div class="container">
+              <div class="year-heading">
+                <h2>{group.year}</h2>
+                <div class="year-line"></div>
+              </div>
+
+              <div class="publication-list">
+                {group.items.map((item, index) => (
+                  <article class="publication-item">
+                    <div class="pub-number">{index + 1}</div>
+
+                    <div>
+                      <div class="pub-citation">{item.citation}</div>
+
+                      <div class="pub-meta">
+                        {item.doi && (
+                          <a
+                            class="doi-link"
+                            href={`https://doi.org/${item.doi}`}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            DOI: {item.doi}
+                          </a>
+                        )}
+
+                        {item.status && (
+                          <span class="status-pill">{item.status}</span>
+                        )}
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ))
+      }
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>ⓒ 2026 HY-EMS LAB</span>
+        <span>Hanyang University ERICA · Microrobotics · Power Converter</span>
+      </div>
+    </footer>
+
+    <script>
+      const glow = document.querySelector(".cursor-glow");
+
+      document.addEventListener("mousemove", (event) => {
+        glow.style.left = event.clientX + "px";
+        glow.style.top = event.clientY + "px";
+      });
+
+      const canvas = document.getElementById("particles");
+      const ctx = canvas.getContext("2d");
+
+      let width;
+      let height;
+
+      function resizeCanvas() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      const particles = [];
+      const particleCount = Math.min(75, Math.floor(window.innerWidth / 15));
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          radius: Math.random() * 1.7 + 0.4,
+          vx: Math.random() * 0.18 - 0.09,
+          vy: Math.random() * 0.28 - 0.14,
+        });
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, width, height);
+
+        particles.forEach((particle) => {
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+
+          if (particle.x < 0 || particle.x > width) {
+            particle.vx *= -1;
+          }
+
+          if (particle.y < 0 || particle.y > height) {
+            particle.vy *= -1;
+          }
+
+          ctx.beginPath();
+          ctx.arc(
+            particle.x,
+            particle.y,
+            particle.radius,
+            0,
+            Math.PI * 2
+          );
+
+          ctx.fillStyle = "rgba(0,84,166,0.22)";
+          ctx.fill();
+        });
+
+        requestAnimationFrame(animateParticles);
+      }
+
+      animateParticles();
+    </script>
+  </body>
+</html>

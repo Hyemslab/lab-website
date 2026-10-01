@@ -1,0 +1,559 @@
+---
+const pageTitle = "People | HY-EMS LAB";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="People of the Electromagnetic Systems Laboratory (EMS), Hanyang University ERICA."
+    />
+    <title>{pageTitle}</title>
+
+    <style>
+      :root {
+        --hyu: #0054a6;
+        --hyu-deep: #003b73;
+        --hyu-mid: #1578c6;
+        --hyu-sky: #67bff2;
+        --hyu-pale: #eaf5ff;
+        --text: #15324c;
+        --muted: #6d8296;
+        --line: rgba(0, 84, 166, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: Inter, "Pretendard", Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 10% 10%, rgba(103, 191, 242, 0.18), transparent 28%),
+          radial-gradient(circle at 88% 18%, rgba(0, 84, 166, 0.13), transparent 26%),
+          linear-gradient(180deg, #ffffff 0%, #f4faff 48%, #ffffff 100%);
+        overflow-x: hidden;
+      }
+
+      .background-grid {
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(0, 84, 166, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 84, 166, 0.04) 1px, transparent 1px);
+        background-size: 64px 64px;
+        mask-image: linear-gradient(to bottom, black, transparent 88%);
+        pointer-events: none;
+        z-index: -5;
+      }
+
+      #particles {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -4;
+      }
+
+      .cursor-glow {
+        position: fixed;
+        width: 460px;
+        height: 460px;
+        border-radius: 50%;
+        background:
+          radial-gradient(
+            circle,
+            rgba(64, 165, 235, 0.16),
+            rgba(0, 84, 166, 0.07) 42%,
+            transparent 72%
+          );
+        transform: translate(-50%, -50%);
+        filter: blur(12px);
+        pointer-events: none;
+        z-index: -3;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 42px));
+        margin: 0 auto;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 78px;
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(0, 84, 166, 0.08);
+        z-index: 1000;
+      }
+
+      .nav-inner {
+        width: min(1180px, calc(100% - 42px));
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--hyu);
+        font-weight: 850;
+        letter-spacing: 0.12em;
+        font-size: 17px;
+        text-decoration: none;
+      }
+
+      .logo-mark {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: white;
+        font-size: 11px;
+        letter-spacing: 0.03em;
+        background: linear-gradient(135deg, var(--hyu), var(--hyu-mid));
+        box-shadow: 0 8px 24px rgba(0, 84, 166, 0.22);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 28px;
+      }
+
+      .nav-links a {
+        color: #58728b;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        transition: 0.25s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--hyu);
+      }
+
+      main {
+        padding-top: 78px;
+      }
+
+      .people-hero {
+        padding: 110px 0 70px;
+      }
+
+      .section-kicker {
+        color: var(--hyu);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 12px;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        font-size: clamp(50px, 7vw, 92px);
+        line-height: 0.95;
+        letter-spacing: -0.055em;
+        color: #153a59;
+      }
+
+      .hero-desc {
+        margin-top: 24px;
+        max-width: 700px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .people-tabs {
+        position: sticky;
+        top: 78px;
+        z-index: 900;
+        background: rgba(247, 251, 255, 0.88);
+        backdrop-filter: blur(14px);
+        border-top: 1px solid rgba(0, 84, 166, 0.07);
+        border-bottom: 1px solid rgba(0, 84, 166, 0.10);
+      }
+
+      .people-tabs-inner {
+        min-height: 62px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .people-tabs a {
+        color: #5c748b;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 750;
+        padding: 10px 16px;
+        border-radius: 999px;
+        transition: 0.25s ease;
+      }
+
+      .people-tabs a:hover {
+        color: var(--hyu);
+        background: var(--hyu-pale);
+      }
+
+      .people-section {
+        scroll-margin-top: 165px;
+        padding: 90px 0 20px;
+      }
+
+      .people-section:last-of-type {
+        padding-bottom: 120px;
+      }
+
+      .people-section h2 {
+        margin-bottom: 28px;
+        font-size: 34px;
+        letter-spacing: -0.025em;
+        color: #153a59;
+      }
+
+      .faculty-card {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 42px;
+        align-items: start;
+        padding: 34px;
+        border: 1px solid rgba(0, 84, 166, 0.10);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.84);
+        box-shadow: 0 18px 60px rgba(28, 94, 146, 0.08);
+        backdrop-filter: blur(14px);
+      }
+
+      .faculty-photo {
+        width: 50%;
+        max-width: 160px;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        object-position: center top;
+        border-radius: 14px;
+        border: 1px solid rgba(0, 84, 166, 0.10);
+        box-shadow: 0 10px 28px rgba(0, 84, 166, 0.10);
+        background: #eef6fc;
+      }
+
+      .faculty-name {
+        margin-top: 18px;
+        font-size: 28px;
+        font-weight: 850;
+        color: #153a59;
+      }
+
+      .faculty-role {
+        margin-top: 6px;
+        color: var(--hyu);
+        font-size: 14px;
+        font-weight: 750;
+      }
+
+      .faculty-affiliation {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .faculty-detail {
+        display: grid;
+        gap: 30px;
+      }
+
+      .faculty-section h3 {
+        margin-bottom: 12px;
+        color: var(--hyu);
+        font-size: 15px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .faculty-section ul {
+        list-style: none;
+        display: grid;
+        gap: 9px;
+      }
+
+      .faculty-section li {
+        position: relative;
+        padding-left: 16px;
+        color: #4f687f;
+        line-height: 1.75;
+      }
+
+      .faculty-section li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.78em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--hyu-mid);
+      }
+
+      .people-placeholder {
+        min-height: 160px;
+        padding: 28px 30px;
+        border: 1px dashed rgba(0, 84, 166, 0.20);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.62);
+        display: flex;
+        align-items: center;
+        color: #7890a7;
+      }
+
+      footer {
+        margin-top: 80px;
+        padding: 40px 0;
+        border-top: 1px solid var(--line);
+        background: white;
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 800px) {
+        .nav-links {
+          display: none;
+        }
+
+        .faculty-card {
+          grid-template-columns: 1fr;
+        }
+
+        .faculty-photo {
+          width: 160px;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas id="particles"></canvas>
+    <div class="background-grid"></div>
+    <div class="cursor-glow"></div>
+
+    <nav>
+      <div class="nav-inner">
+        <a class="logo" href="/">
+          <div class="logo-mark">EMS</div>
+          HY-EMS LAB
+        </a>
+
+        <div class="nav-links">
+          <a href="/#research">RESEARCH</a>
+          <a href="/#publications">PUBLICATIONS</a>
+          <a class="active" href="/people">PEOPLE</a>
+          <a href="/#contact">CONTACT</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="people-hero">
+        <div class="container">
+          <div class="section-kicker">People</div>
+          <h1>Meet the team.</h1>
+          <p class="hero-desc">
+            Faculty and students working together on electromagnetic systems,
+            microrobot control, battery management systems, and bio-sensing systems.
+          </p>
+        </div>
+      </section>
+
+      <div class="people-tabs">
+        <div class="container people-tabs-inner">
+          <a href="#faculty">Faculty</a>
+          <a href="#phd">Ph.D.</a>
+          <a href="#ms">M.S.</a>
+          <a href="#undergraduate">Undergraduate</a>
+        </div>
+      </div>
+
+      <section id="faculty" class="people-section">
+        <div class="container">
+          <h2>Faculty</h2>
+
+          <article class="faculty-card">
+            <div>
+              <img
+                class="faculty-photo"
+                src="/faculty-sangwon-lee.jpg"
+                alt="Sangwon Lee"
+              />
+              <div class="faculty-name">Sangwon Lee, Ph.D.</div>
+              <div class="faculty-role">Assistant Professor</div>
+              <div class="faculty-affiliation">
+                School of Electrical Engineering<br />
+                Hanyang University ERICA
+              </div>
+            </div>
+
+            <div class="faculty-detail">
+              <div class="faculty-section">
+                <h3>Research Interests</h3>
+                <ul>
+                  <li>Electromagnetic system / Microrobot control</li>
+                  <li>Battery management system</li>
+                  <li>Bio-sensing system</li>
+                </ul>
+              </div>
+
+              <div class="faculty-section">
+                <h3>Education</h3>
+                <ul>
+                  <li>(2024) Seoul National University, Power Electronics (Ph.D.)</li>
+                  <li>(2018) University of Manchester, Mechatronics (M.Eng.)</li>
+                  <li>(2017) University of Manchester, Mechatronics (B.Eng.)</li>
+                </ul>
+              </div>
+
+              <div class="faculty-section">
+                <h3>Experience</h3>
+                <ul>
+                  <li>(2026–Current) Hanyang University ERICA, School of Electrical Engineering, Assistant Professor</li>
+                  <li>(2024–2026) Southern Methodist University, Mechanical Engineering Department, Postdoctoral Fellow</li>
+                  <li>(2020–2023) Seoul National University Power Electronics Center, Researcher</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="phd" class="people-section">
+        <div class="container">
+          <h2>Ph.D.</h2>
+          <div class="people-placeholder">.</div>
+        </div>
+      </section>
+
+      <section id="ms" class="people-section">
+        <div class="container">
+          <h2>M.S.</h2>
+          <div class="people-placeholder">.</div>
+        </div>
+      </section>
+
+      <section id="undergraduate" class="people-section">
+        <div class="container">
+          <h2>Undergraduate</h2>
+          <div class="people-placeholder">.</div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>ⓒ 2026 HY-EMS LAB</span>
+        <span>Hanyang University ERICA · Microrobotics · Power Converter</span>
+      </div>
+    </footer>
+
+    <script>
+      const glow = document.querySelector(".cursor-glow");
+
+      document.addEventListener("mousemove", (event) => {
+        glow.style.left = event.clientX + "px";
+        glow.style.top = event.clientY + "px";
+      });
+
+      const canvas = document.getElementById("particles");
+      const ctx = canvas.getContext("2d");
+
+      let width;
+      let height;
+
+      function resizeCanvas() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      const particles = [];
+      const particleCount = Math.min(75, Math.floor(window.innerWidth / 15));
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          radius: Math.random() * 1.7 + 0.4,
+          vx: Math.random() * 0.18 - 0.09,
+          vy: Math.random() * 0.28 - 0.14,
+        });
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, width, height);
+
+        particles.forEach((particle) => {
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+
+          if (particle.x < 0 || particle.x > width) {
+            particle.vx *= -1;
+          }
+
+          if (particle.y < 0 || particle.y > height) {
+            particle.vy *= -1;
+          }
+
+          ctx.beginPath();
+          ctx.arc(
+            particle.x,
+            particle.y,
+            particle.radius,
+            0,
+            Math.PI * 2
+          );
+
+          ctx.fillStyle = "rgba(0,84,166,0.22)";
+          ctx.fill();
+        });
+
+        requestAnimationFrame(animateParticles);
+      }
+
+      animateParticles();
+    </script>
+  </body>
+</html>
