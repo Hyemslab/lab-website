@@ -93,6 +93,16 @@ const publications = [
         scroll-behavior: smooth;
       }
 
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
       body {
         font-family:
           Inter,
@@ -122,7 +132,6 @@ const publications = [
         display: flex;
         align-items: center;
         background: rgba(255, 255, 255, 0.78);
-        backdrop-filter: blur(18px);
         border-bottom: 1px solid rgba(0, 84, 166, 0.08);
         z-index: 1000;
       }
@@ -184,29 +193,6 @@ const publications = [
         padding-top: 80px;
         position: relative;
       }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        width: 720px;
-        height: 720px;
-        top: 2%;
-        right: -260px;
-        border-radius: 50%;
-        background:
-          radial-gradient(
-            circle,
-            rgba(76, 170, 235, 0.20),
-            rgba(0, 84, 166, 0.08) 40%,
-            transparent 70%
-          );
-        animation: floatingOrb 7s ease-in-out infinite alternate;
-      }
-
-      @keyframes floatingOrb {
-        from {
-          transform: translateY(-25px) scale(0.95);
-        }
         to {
           transform: translateY(35px) scale(1.08);
         }
@@ -231,7 +217,6 @@ const publications = [
         letter-spacing: 0.12em;
         text-transform: uppercase;
         background: rgba(255, 255, 255, 0.66);
-        backdrop-filter: blur(12px);
         box-shadow: 0 12px 35px rgba(0, 84, 166, 0.05);
       }
 
@@ -265,14 +250,7 @@ const publications = [
           );
         -webkit-background-clip: text;
         color: transparent;
-        background-size: 220% auto;
-        animation: gradientMove 7s linear infinite;
       }
-
-      @keyframes gradientMove {
-        to {
-          background-position: 220% center;
-        }
       }
 
       .hero-description {
@@ -370,20 +348,6 @@ const publications = [
         line-height: 1.8;
       }
 
-      /* scroll reveal */
-      .reveal {
-        opacity: 0;
-        transform: translateY(42px);
-        transition:
-          opacity 0.85s ease,
-          transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
-      }
-
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
       .research-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -396,11 +360,10 @@ const publications = [
         border: 1px solid rgba(0, 84, 166, 0.10);
         border-radius: 26px;
         background: rgba(255, 255, 255, 0.78);
-        backdrop-filter: blur(15px);
         box-shadow: 0 16px 50px rgba(28, 94, 146, 0.07);
         position: relative;
         overflow: hidden;
-        transition: 0.4s ease;
+        transition: transform 0.2s ease, border-color 0.2s ease;
       }
 
       .research-card::after {
@@ -424,7 +387,7 @@ const publications = [
       .research-card:hover {
         transform: translateY(-10px);
         border-color: rgba(0, 84, 166, 0.24);
-        box-shadow: 0 26px 65px rgba(0, 84, 166, 0.14);
+        box-shadow: 0 14px 30px rgba(0, 84, 166, 0.10);
       }
 
       .research-card:hover::after {
@@ -692,7 +655,7 @@ const publications = [
         </div>
       </section>
 
-      <section id="research" class="reveal">
+      <section id="research">
         <div class="container">
           <div class="section-head">
             <div>
@@ -719,7 +682,7 @@ const publications = [
         </div>
       </section>
 
-      <section id="publications" class="reveal">
+      <section id="publications">
         <div class="container">
           <div class="section-head">
             <div>
@@ -752,7 +715,7 @@ const publications = [
         </div>
       </section>
 
-      <section class="join reveal" id="contact">
+      <section class="join" id="contact">
         <div class="container">
           <div class="join-box">
             <div class="section-kicker">Join Us</div>
@@ -781,22 +744,5 @@ const publications = [
         <span>Hanyang University ERICA · Microrobotics · Power Converter</span>
       </div>
     </footer>
-
-    <script>
-const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("active");
-            }
-          });
-        },
-        { threshold: 0.12 }
-      );
-
-      document.querySelectorAll(".reveal").forEach((element) => {
-        observer.observe(element);
-      });
-</script>
-  </body>
+</body>
 </html>
